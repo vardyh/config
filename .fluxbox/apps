@@ -1,0 +1,21 @@
+[app] (name=fbrun)
+	[Position] (WINCENTER) {0 0}
+	[Layer]	{2}
+[end]
+
+[app] (class=Conky)
+	[Sticky] {yes}
+	[IconHidden] {yes}
+	[Layer] {4}
+[end]
+
+[group]
+	[app] (name=xterm) (class=XTerm)
+	[Dimensions] {1000 600}
+	[Position] (WINCENTER) {0 0}
+	[Alpha] {180}
+	[Sticky] {yes}
+	[IconHidden] {yes}
+	[Layer] {2}
+	[Deco] {516}
+[end]
