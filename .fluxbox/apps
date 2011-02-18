@@ -1,6 +1,10 @@
+[startup] { synclient TouchpadOff=1 }
+[startup] { conky }
+[startup] { xcompmgr -Sc }
+
 [app] (name=fbrun)
-	[Position] (WINCENTER) {0 0}
-	[Layer]	{2}
+  [Position]	(WINCENTER)	{0 0}
+  [Layer]	{2}
 [end]
 
 [app] (class=Conky)
@@ -13,7 +17,7 @@
 	[app] (name=xterm) (class=XTerm)
 	[Dimensions] {1000 600}
 	[Position] (WINCENTER) {0 0}
-	[Alpha] {180}
+	[Alpha] {200}
 	[Sticky] {yes}
 	[IconHidden] {yes}
 	[Layer] {2}
