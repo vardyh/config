@@ -1,0 +1,6 @@
+startup_message off
+escape ^Pp
+
+shelltitle '$ |bash'
+hardstatus string "screen: %t"
+caption always '%{= kG}[ %{G}%H %{g}][%= %{=kw}%?%-Lw%?%{r}(%{W}%n*%f %t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B}%Y-%m-%d %{W}%c %{g}]'
