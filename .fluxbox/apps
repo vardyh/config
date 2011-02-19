@@ -1,16 +1,28 @@
 [startup] { synclient TouchpadOff=1 }
-[startup] { conky }
 [startup] { xcompmgr -Sc }
+[startup] { conky }
+[startup] { pkill ibus-daemon }
+[startup] { ibus-daemon -d }
 
 [app] (name=fbrun)
-  [Position]	(WINCENTER)	{0 0}
-  [Layer]	{2}
+	[Position] (WINCENTER) {0 0}
+	[Layer]	{2}
+[end]
+
+[app] (class=MPlayer)
+	[Position] (WINCENTER) {0 0}
+	[Layer] {2}
 [end]
 
 [app] (class=Conky)
 	[Sticky] {yes}
 	[IconHidden] {yes}
 	[Layer] {4}
+[end]
+
+[app] (class=Firefox)
+	[Workspace] {2}
+	[Jump] {yes}
 [end]
 
 [group]
@@ -20,6 +32,6 @@
 	[Alpha] {200}
 	[Sticky] {yes}
 	[IconHidden] {yes}
-	[Layer] {2}
+	[Layer] {4}
 	[Deco] {516}
 [end]
