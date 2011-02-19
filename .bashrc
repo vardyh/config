@@ -104,3 +104,18 @@ export XMODIFIERS=@im=ibus
 export QT_IM_MODULE=ibus
 
 export PS1='\[\033[01;33m\]\u@\h\[\033[01;34m\] \W \$\[\033[00m\] '
+
+# title definations
+case $TERM in
+	xterm*)
+		TITLEBAR='\[\e]0;${PWD}\a\]'
+		PS1="${TITLEBAR}${PS1}"
+	;;
+	screen*)
+		PATHTITLE='\[\ek\W\e\\\]'
+		PROGRAMTITLE='\[\ek\e\\\]'
+		PS1="${PROGRAMTITLE}${PATHTITLE}${PS1}"
+	;;
+	*)
+	;;
+esac
