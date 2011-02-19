@@ -3,4 +3,4 @@ escape ^Ll
 
 shelltitle '$ |bash'
 hardstatus string "%t"
-caption always '%{= kG}[ %{G}%H %{g}][%= %{=kw}%?%-Lw%?%{r}(%{W}%n*%f %t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B}%Y-%m-%d %{W}%c %{g}]'
+caption always '%{= kW}[%= %{=kw}%?%-Lw%?%{R}(%{W}%n*%f %t%?(%u)%?%{R})%{w}%?%+Lw%?%?%= %{W}]%{w}[ %{Y}%Y-%m-%d %{G}%c %{w}]'
