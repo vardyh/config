@@ -44,7 +44,7 @@ Mod4 8 :Tab 8
 Mod4 9 :Tab 9
 
 # open a terminal
-Control Mod1 x :Exec xterm
+Control Mod1 x :Exec xterm -e screen
 
 # Toggle xterms
 # Control (tilde key):
@@ -52,7 +52,7 @@ Control Mod1 x :Exec xterm
 # them and hiding them.  If there are not any open, then
 # open one up.
 # all one line
-Mod1 49 :If {Some Matches (xterm)} {ToggleCmd {NextGroup (name=xterm)} {MacroCmd {NextGroup (name=xterm)} {Delay {Iconify} 1}}} {Exec xterm}
+Mod1 49 :If {Some Matches (xterm)} {ToggleCmd {NextGroup (name=xterm)} {MacroCmd {NextGroup (name=xterm)} {Delay {Iconify} 1}}} {Exec xterm -e screen}
 
 # open a dialog to run programs
 Mod1 F2 :Exec fbrun
