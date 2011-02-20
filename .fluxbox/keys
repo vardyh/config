@@ -44,7 +44,7 @@ Mod4 8 :Tab 8
 Mod4 9 :Tab 9
 
 # open a terminal
-Control Mod1 x :Exec xterm -e screen
+Control Mod1 x :Exec xterm -e "clear && screen"
 
 # Toggle xterms
 # Control (tilde key):
@@ -52,16 +52,16 @@ Control Mod1 x :Exec xterm -e screen
 # them and hiding them.  If there are not any open, then
 # open one up.
 # all one line
-Mod1 49 :If {Some Matches (xterm)} {ToggleCmd {NextGroup (name=xterm)} {MacroCmd {NextGroup (name=xterm)} {Delay {Iconify} 1}}} {Exec xterm -e screen}
+Mod1 49 :If {Some Matches (xterm)} {ToggleCmd {NextGroup (name=xterm)} {MacroCmd {NextGroup (name=xterm)} {Delay {Iconify} 1}}} {Exec xterm -e "clear && screen"}
 
 # open a dialog to run programs
 Mod1 F2 :Exec fbrun
 
 # volume settings, using common keycodes
 # if these don't work, use xev to find out your real keycodes
-176 :Exec amixer sset Master,0 1+
-174 :Exec amixer sset Master,0 1-
-160 :Exec amixer sset Master,0 toggle
+123 :Exec amixer sset Master,0 1+
+122 :Exec amixer sset Master,0 1-
+#160 :Exec amixer sset Master,0 toggle
 
 # current window commands
 Mod1 F4 :Close

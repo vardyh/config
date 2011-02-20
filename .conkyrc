@@ -27,4 +27,4 @@ gap_x 0
 gap_y 0
 
 TEXT
-cpu: ${cpu cpu1}%, ${cpu cpu2}% | memory: $memperc% | uptime: ${uptime} | down: ${downspeed wlan0} ${totaldown wlan0} downloaded | up: ${upspeed wlan0} ${totalup wlan0} uploaded | /: ${fs_free /}/${fs_size /} free | /home: ${fs_free /home}/${fs_size /home} free | battery: ${battery} ${battery_time} ${alignr}${time}
+cpu: ${cpu cpu1}%, ${cpu cpu2}% | memory: $memperc% | uptime: ${uptime} | down: ${downspeed wlan0} ${totaldown wlan0} downloaded | up: ${upspeed wlan0} ${totalup wlan0} uploaded | /: ${fs_free /}/${fs_size /} free | /home: ${fs_free /home}/${fs_size /home} free | battery: ${battery} ${battery_time} | mixer: ${mixerl}/${mixer}${alignr}${time}

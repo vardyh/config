@@ -1,8 +1,7 @@
 [startup] { synclient TouchpadOff=1 }
 [startup] { xcompmgr -Sc }
 [startup] { conky }
-[startup] { pkill ibus-daemon }
-[startup] { ibus-daemon -d }
+[startup] { ibus-daemon }
 
 [app] (name=fbrun)
 	[Position] (WINCENTER) {0 0}
@@ -27,7 +26,7 @@
 
 [group]
 	[app] (name=xterm) (class=XTerm)
-	[Dimensions] {1000 600}
+	[Dimensions] {900 550}
 	[Position] (WINCENTER) {0 0}
 	[Alpha] {200}
 	[Sticky] {yes}
