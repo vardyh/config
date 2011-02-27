@@ -18,3 +18,7 @@
   (c-set-style "linux"))
 (add-hook 'c-mode-hook 'c/c++-mode-hook)
 (add-hook 'c++-mode-hook 'c/c++-mode-hook)
+
+(require 'yasnippet)
+(yas/initialize)
+(yas/load-directory "~/.emacs.d/yasnippets")
