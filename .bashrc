@@ -102,6 +102,9 @@ fi
 export GTK_IM_MODULE=ibus
 export XMODIFIERS=@im=ibus
 export QT_IM_MODULE=ibus
+# start ibus
+pkill ibus-daemon
+ibus-daemon -d
 
 export PS1='\[\033[01;33m\]\u@\h\[\033[01;34m\] \W \$\[\033[00m\] '
 

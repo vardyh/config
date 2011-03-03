@@ -1,17 +1,25 @@
+(add-to-list 'load-path "~/.emacs.d/plugins")
+
 (setq inhibit-startup-message t)
 
 (tool-bar-mode nil)
 (scroll-bar-mode nil)
 (show-paren-mode t)
 
-(if (eq system-type 'gnu/linux)
-    (set-default-font "Monaco-8"))
+(if (eq window-system 'x)
+    (progn
+      (set-default-font "Monaco-8")
+      (require 'color-theme)
+      (color-theme-blue-mood)))
 
 (global-set-key [(mouse-4)] '(lambda () (interactive) (scroll-down 1)))
 (global-set-key [(mouse-5)] '(lambda () (interactive) (scroll-up 1)))
 
+(global-set-key [(f7)] 'compile)
+(global-set-key [(f12)] 'eshell)
+
 (defun elisp-mode-hook ()
-  (local-set-key [(tab)] 'lisp-complete-symbol))
+  (local-set-key [(meta return)] 'lisp-complete-symbol))
 (add-hook 'emacs-lisp-mode-hook 'elisp-mode-hook)
 
 (defun c/c++-mode-hook ()

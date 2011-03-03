@@ -1,7 +1,6 @@
 [startup] { synclient TouchpadOff=1 }
 [startup] { xcompmgr -Sc }
 [startup] { conky }
-[startup] { ibus-daemon }
 
 [app] (name=fbrun)
 	[Position] (WINCENTER) {0 0}
