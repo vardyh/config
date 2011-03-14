@@ -1,6 +1,12 @@
-(add-to-list 'load-path "~/.emacs.d/plugins")
+(setq config-dir "~/.emacs.d/")
+(setq plugins-dir (concat config-dir "plugins/"))
 
-(require 'gtags)
+(add-to-list 'load-path plugins-dir)
+
+(require 'auto-complete)
+(add-to-list 'ac-dictionary-directories (concat plugins-dir "ac-dict"))
+(require 'auto-complete-config)
+(ac-config-default)
 
 (setq inhibit-startup-message t)
 (setq scroll-step 1)
@@ -30,13 +36,17 @@
 
 (defun c/c++-mode-hook ()
   (c-set-style "linux")
-  (gtags-mode)
-  (local-set-key (kbd "\M-.") 'gtags-find-tag)
-  (local-set-key (kbd "\M-,") 'gtags-find-symbol)
-  (local-set-key (kbd "\C-x p") 'gtags-pop-stack))
+  (gtags-mode t)
+  (auto-complete-mode t)
+)
 (add-hook 'c-mode-hook 'c/c++-mode-hook)
 (add-hook 'c++-mode-hook 'c/c++-mode-hook)
 
 (require 'yasnippet)
 (yas/initialize)
-(yas/load-directory "~/.emacs.d/yasnippets")
+(yas/load-directory (concat config-dir "yasnippets"))
+
+(require 'gtags)
+(global-set-key (kbd "\M-.") 'gtags-find-tag)
+(global-set-key (kbd "\M-,") 'gtags-find-symbol)
+(global-set-key (kbd "\C-x p") 'gtags-pop-stack)
