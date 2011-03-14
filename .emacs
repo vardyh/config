@@ -38,7 +38,7 @@
   (c-set-style "linux")
   (gtags-mode t)
   (auto-complete-mode t)
-)
+  (local-set-key [(f5)] 'gud-gdb))
 (add-hook 'c-mode-hook 'c/c++-mode-hook)
 (add-hook 'c++-mode-hook 'c/c++-mode-hook)
 
