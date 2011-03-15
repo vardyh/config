@@ -1,10 +1,10 @@
 (setq config-dir "~/.emacs.d/")
-(setq plugins-dir (concat config-dir "plugins/"))
+(setq plugin-dir (concat config-dir "plugins/"))
 
-(add-to-list 'load-path plugins-dir)
+(setq load-path (cons plugin-dir load-path))
 
 (require 'auto-complete)
-(add-to-list 'ac-dictionary-directories (concat plugins-dir "ac-dict"))
+(add-to-list 'ac-dictionary-directories (concat plugin-dir "ac-dict"))
 (require 'auto-complete-config)
 (ac-config-default)
 
@@ -44,7 +44,7 @@
 
 (require 'yasnippet)
 (yas/initialize)
-(yas/load-directory (concat config-dir "yasnippets"))
+(yas/load-directory (concat plugin-dir "snippets"))
 
 (require 'gtags)
 (global-set-key (kbd "\M-.") 'gtags-find-tag)
