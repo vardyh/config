@@ -41,7 +41,6 @@
   (c-set-style "linux")
   (gtags-mode t)
   (auto-complete-mode t)
-  (ecb-activate)
   (local-set-key [(f5)] 'gud-gdb))
 (add-hook 'c-mode-hook 'c/c++-mode-hook)
 (add-hook 'c++-mode-hook 'c/c++-mode-hook)
@@ -93,3 +92,38 @@
 
 (setq load-path (cons (concat plugin-dir "ecb") load-path))
 (require 'ecb)
+(setq ecb-tip-of-the-day nil)
+
+(setq ecb-stat nil)
+(defun ecb-toggle-activate ()
+  (interactive)
+  (if ecb-stat
+      (progn
+	(ecb-deactivate)
+	(setq ecb-stat nil))
+    (progn
+      (ecb-activate)
+      (ecb-layout-switch "left9")
+      (setq ecb-stat t))))
+(global-set-key (kbd "\C-x <f9>") 'ecb-toggle-activate)
+
+(custom-set-variables
+ '(ecb-layout-window-sizes (quote (("left9" (0.18994413407821228 . 0.98)))))
+ '(ecb-options-version "2.40"))
+
+(require 'tabbar)
+(tabbar-mode t)
+(set-face-attribute 'tabbar-default nil
+                    :family "Tahoma"
+                    :background "gray80"
+                    :foreground "gray30"
+                    :height 1.0
+                    )
+(set-face-attribute 'tabbar-button nil
+                    :inherit 'tabbar-default
+                    :box '(:line-width 1 :color "gray30")
+                    )
+(set-face-attribute 'tabbar-unselected nil
+                    :inherit 'tabbar-default
+                    :box '(:line-width 2 :color "gray70")
+                    )
