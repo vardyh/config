@@ -87,3 +87,9 @@
 	 (set-face-attribute face nil :weight 'normal :underline nil))
        (face-list))))
 
+(load-file (concat plugin-dir "cedet/common/cedet.el"))
+(setq semanticdb-default-save-directory (concat config-dir "semanticdb"))
+(semantic-load-enable-code-helpers)
+
+(setq load-path (cons (concat plugin-dir "ecb") load-path))
+(require 'ecb)
