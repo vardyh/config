@@ -91,7 +91,7 @@
       (cursor-color . "#ffffff")
       (foreground-color . "#d0d0d0")
       (mouse-color . "white"))
-     (fringe ((t (:background "#000000"))))
+     (fringe ((t (:background "#002832"))))
      (mode-line ((t (:foreground "#b5b5b5" :background "#000000"))))
      (region ((t (:background "#707df5"))))
      (font-lock-builtin-face ((t (:foreground "#ffc0c0"))))
@@ -130,11 +130,11 @@
 (add-hook 'c-mode-hook 'c/c++-mode-hook)
 (add-hook 'c++-mode-hook 'c/c++-mode-hook)
 
-;; gud-gdb mode
-(defun gdb-mode-hook ()
-  (local-set-key [(f11)] 'gud-next)
-  (local-set-key [(f10)] 'gud-step))
-(add-hook 'gud-gdb-mode-hook 'gdb-mode-hook)
+;; gdb mode
+(defun gud/gdb-mode-hook ()
+  (local-set-key [(f10)] 'gud-next)
+  (local-set-key [(f11)] 'gud-step))
+(add-hook 'gud-gdb-mode-hook 'gud/gdb-mode-hook)
 
 ;; unset exit keybindins
 (global-unset-key (kbd "\C-z"))
