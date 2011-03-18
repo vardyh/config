@@ -53,7 +53,7 @@
       (ecb-layout-switch "left9")
       (setq ecb-stat t))))
 (custom-set-variables
- '(ecb-layout-window-sizes (quote (("left9" (0.18994413407821228 . 0.98)))))
+ '(ecb-layout-window-sizes (quote (("left9" (0.19 . 0.98)))))
  '(ecb-options-version "2.40"))
 
 ;; tabbar
@@ -126,6 +126,7 @@
   (c-set-style "linux")
   (gtags-mode t)
   (auto-complete-mode t)
+  (local-set-key (kbd "M-RET") 'ac-complete-semantic)
   (local-set-key [(f5)] 'gud-gdb))
 (add-hook 'c-mode-hook 'c/c++-mode-hook)
 (add-hook 'c++-mode-hook 'c/c++-mode-hook)
@@ -149,9 +150,9 @@
 (global-set-key (kbd "\C-x <f9>") 'ecb-toggle-activate)
 
 ;; gtags bindings
-(global-set-key (kbd "\C-x t") 'gtags-find-tag)
-(global-set-key (kbd "\C-x s") 'gtags-find-symbol)
-(global-set-key (kbd "\C-x p") 'gtags-pop-stack)
+(global-set-key (kbd "M-.") 'gtags-find-tag)
+(global-set-key (kbd "M-,") 'gtags-find-symbol)
+(global-set-key (kbd "C-x p") 'gtags-pop-stack)
 
 ;; smooth mouse scrolling
 (global-set-key [(mouse-4)] '(lambda () (interactive) (scroll-down 3)))
