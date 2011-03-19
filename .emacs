@@ -27,10 +27,16 @@
 (require 'yasnippet)
 (yas/initialize)
 (yas/load-directory (concat plugin-dir "snippets"))
+; keybindings
+(global-set-key (kbd "M-/") 'yas/expand)
 
 ;; gtags
 (require 'gtags)
 (gtags-mode t)
+; keybindings
+(global-set-key (kbd "M-.") 'gtags-find-tag)
+(global-set-key (kbd "M-,") 'gtags-find-symbol)
+(global-set-key (kbd "C-x p") 'gtags-pop-stack)
 
 ;; cedet
 (load-file (concat plugin-dir "cedet/common/cedet.el"))
@@ -55,6 +61,8 @@
 (custom-set-variables
  '(ecb-layout-window-sizes (quote (("left9" (0.19 . 0.98)))))
  '(ecb-options-version "2.40"))
+; keybindings
+(global-set-key (kbd "\C-x <f9>") 'ecb-toggle-activate)
 
 ;; tabbar
 (require 'tabbar)
@@ -77,6 +85,11 @@
 ;; line number
 (require 'linum)
 (global-linum-mode t)
+
+;; layout
+(require 'layout-restore)
+(global-set-key (kbd "C-c l") 'layout-save-current)
+(global-set-key (kbd "C-c d") 'layout-delete-current)
 
 ;; color theme
 (require 'color-theme)
@@ -124,6 +137,7 @@
 ;; c/c++ mode
 (defun c/c++-mode-hook ()
   (c-set-style "linux")
+  (c-toggle-hungry-state t)
   (gtags-mode t)
   (auto-complete-mode t)
   (local-set-key (kbd "M-RET") 'ac-complete-semantic)
@@ -145,14 +159,6 @@
 (global-set-key [(f3)] 'dired)
 (global-set-key [(f7)] 'compile)
 (global-set-key [(f12)] 'eshell)
-
-;; ecb bindings
-(global-set-key (kbd "\C-x <f9>") 'ecb-toggle-activate)
-
-;; gtags bindings
-(global-set-key (kbd "M-.") 'gtags-find-tag)
-(global-set-key (kbd "M-,") 'gtags-find-symbol)
-(global-set-key (kbd "C-x p") 'gtags-pop-stack)
 
 ;; smooth mouse scrolling
 (global-set-key [(mouse-4)] '(lambda () (interactive) (scroll-down 3)))
