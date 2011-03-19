@@ -165,3 +165,15 @@
 (global-set-key [(mouse-5)] '(lambda () (interactive) (scroll-up 3)))
 (global-set-key [(mwheel-up)] '(lambda () (interactive) (scroll-down 3)))
 (global-set-key [(mwheel-down)] '(lambda () (interactive) (scroll-up 3)))
+
+;; search current word
+(defun isearch-current-word (func)
+  (let ((cur-word (current-word)))
+    (if (not cur-word)
+	(message "(current-word) == nil")
+      (call-interactively func)
+      (isearch-yank-string cur-word))))
+(defun isearch-current-word-forward (&optional backward)
+  (interactive "P")
+  (isearch-current-word 'isearch-forward))
+(global-set-key (kbd "C-c C-s") 'isearch-current-word-forward)
