@@ -16,12 +16,21 @@
 (show-paren-mode t)
 (column-number-mode t)
 
+;; ido mode
+(require 'ido)
+(ido-mode t)
+
+;; recent jump
+(require 'recent-jump)
+(global-set-key (kbd "C-c n") 'recent-jump-jump-forward)
+(global-set-key (kbd "C-c p") 'recent-jump-jump-backward)
+
 ;; highlight tail
 (require 'highlight-tail)
 (setq highlight-tail-colors
-          '(("black" . 0)
-            ("#bc2525" . 25)
-            ("black" . 66)))
+          '(("#002832" . 0)
+            ("#c02050" . 30)
+            ("#002832" . 60)))
 (highlight-tail-mode t)
 
 ;; auto complete
@@ -41,8 +50,21 @@
 ;; gtags
 (require 'gtags)
 (gtags-mode t)
+(defun gtags-find-current-word ()
+  (interactive)
+  (let (tagname prompt input)
+    (setq tagname (current-word))
+    (if tagname
+      (setq prompt (concat "Find tag: (default " tagname ") "))
+     (setq prompt "Find tag: "))
+    (setq input (completing-read prompt 'gtags-completing-gtags
+                  nil nil nil gtags-history-list))
+    (if (not (equal "" input))
+      (setq tagname input))
+    (gtags-push-context)
+    (gtags-goto-tag tagname "")))
 ; keybindings
-(global-set-key (kbd "M-.") 'gtags-find-tag)
+(global-set-key (kbd "M-.") 'gtags-find-current-word)
 (global-set-key (kbd "M-,") 'gtags-find-symbol)
 (global-set-key (kbd "C-x p") 'gtags-pop-stack)
 
@@ -124,7 +146,7 @@
      (font-lock-variable-name-face ((t (:foreground "#bcff79"))))
      (minibuffer-prompt ((t (:foreground "#ffffff" t))))
      (font-lock-warning-face ((t (:foreground "Red" :bold t))))
-     )))
+     (isearch-lazy-highlight-face ((t (:background "#353535")))))))
 (if (not (eq (window-system) nil))
     (progn
       (color-theme-vardyh)
