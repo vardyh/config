@@ -16,18 +16,14 @@
 (show-paren-mode t)
 (column-number-mode t)
 
+;; ido mode
+(require 'ido)
+(ido-mode t)
+
 ;; recent jump
 (require 'recent-jump)
 (global-set-key (kbd "C-c n") 'recent-jump-jump-forward)
 (global-set-key (kbd "C-c p") 'recent-jump-jump-backward)
-
-;; highlight tail
-(require 'highlight-tail)
-(setq highlight-tail-colors
-          '(("#002832" . 0)
-            ("#c02050" . 30)
-            ("#002832" . 60)))
-(highlight-tail-mode t)
 
 ;; auto complete
 (require 'auto-complete)
@@ -40,7 +36,6 @@
 (require 'yasnippet)
 (yas/initialize)
 (yas/load-directory (concat plugin-dir "snippets"))
-; keybindings
 (global-set-key (kbd "M-/") 'yas/expand)
 
 ;; gtags
@@ -59,7 +54,6 @@
       (setq tagname input))
     (gtags-push-context)
     (gtags-goto-tag tagname "")))
-; keybindings
 (global-set-key (kbd "M-.") 'gtags-find-current-word)
 (global-set-key (kbd "M-,") 'gtags-find-symbol)
 (global-set-key (kbd "C-x p") 'gtags-pop-stack)
@@ -88,7 +82,6 @@
 (custom-set-variables
  '(ecb-layout-window-sizes (quote (("left9" (0.19 . 0.98)))))
  '(ecb-options-version "2.40"))
-; keybindings
 (global-set-key (kbd "\C-x <f9>") 'ecb-toggle-activate)
 
 ;; tabbar
@@ -117,6 +110,59 @@
 (require 'layout-restore)
 (global-set-key (kbd "C-c l") 'layout-save-current)
 (global-set-key (kbd "C-c d") 'layout-delete-current)
+
+;; emacs lisp mode
+(defun elisp-mode-hook ()
+  (local-set-key (kbd "M-RET") 'lisp-complete-symbol))
+(add-hook 'emacs-lisp-mode-hook 'elisp-mode-hook)
+
+;; c/c++ mode
+(defun c/c++-mode-hook ()
+  (c-set-style "linux")
+  (c-toggle-hungry-state t)
+  (gtags-mode t)
+  (auto-complete-mode t)
+  (hs-minor-mode t)
+  (local-set-key (kbd "M-\\") 'hs-toggle-hiding)
+  (local-set-key (kbd "M-RET") 'ac-complete-semantic)
+  (local-set-key [(f5)] 'gud-gdb))
+(add-hook 'c-mode-hook 'c/c++-mode-hook)
+(add-hook 'c++-mode-hook 'c/c++-mode-hook)
+
+;; gdb mode
+(defun gud/gdb-mode-hook ()
+  (local-set-key [(f10)] 'gud-next)
+  (local-set-key [(f11)] 'gud-step))
+(add-hook 'gud-gdb-mode-hook 'gud/gdb-mode-hook)
+
+;; unset exit keybindings
+(global-unset-key (kbd "\C-z"))
+(global-unset-key (kbd "\C-x \C-z"))
+
+;; utilities
+(global-set-key [(f3)] 'dired)
+(global-set-key [(f5)] 'ede-debug-target)
+(global-set-key [(shift f5)] 'ede-run-target)
+(global-set-key [(f7)] 'ede-compile-target)
+(global-set-key [(f12)] 'eshell)
+
+;; smooth mouse scrolling
+(global-set-key [(mouse-4)] '(lambda () (interactive) (scroll-down 3)))
+(global-set-key [(mouse-5)] '(lambda () (interactive) (scroll-up 3)))
+(global-set-key [(mwheel-up)] '(lambda () (interactive) (scroll-down 3)))
+(global-set-key [(mwheel-down)] '(lambda () (interactive) (scroll-up 3)))
+
+;; search current word
+(defun isearch-current-word (func)
+  (let ((cur-word (current-word)))
+    (if (not cur-word)
+	(message "(current-word) == nil")
+      (call-interactively func)
+      (isearch-yank-string cur-word))))
+(defun isearch-current-word-forward (&optional backward)
+  (interactive "P")
+  (isearch-current-word 'isearch-forward))
+(global-set-key (kbd "C-#") 'isearch-current-word-forward)
 
 ;; color theme
 (require 'color-theme)
@@ -163,53 +209,3 @@
 	  (set-fontset-font (frame-parameter nil 'font)
 			    'han
 			    '("Microsoft YaHei" . "unicode-bmp")))))
-
-
-;; emacs lisp mode
-(defun elisp-mode-hook ()
-  (local-set-key (kbd "M-RET") 'lisp-complete-symbol))
-(add-hook 'emacs-lisp-mode-hook 'elisp-mode-hook)
-
-;; c/c++ mode
-(defun c/c++-mode-hook ()
-  (c-set-style "linux")
-  (c-toggle-hungry-state t)
-  (gtags-mode t)
-  (auto-complete-mode t)
-  (local-set-key (kbd "M-RET") 'ac-complete-semantic)
-  (local-set-key [(f5)] 'gud-gdb))
-(add-hook 'c-mode-hook 'c/c++-mode-hook)
-(add-hook 'c++-mode-hook 'c/c++-mode-hook)
-
-;; gdb mode
-(defun gud/gdb-mode-hook ()
-  (local-set-key [(f10)] 'gud-next)
-  (local-set-key [(f11)] 'gud-step))
-(add-hook 'gud-gdb-mode-hook 'gud/gdb-mode-hook)
-
-;; unset exit keybindins
-(global-unset-key (kbd "\C-z"))
-(global-unset-key (kbd "\C-x \C-z"))
-
-;; utilities
-(global-set-key [(f3)] 'dired)
-(global-set-key [(f7)] 'compile)
-(global-set-key [(f12)] 'eshell)
-
-;; smooth mouse scrolling
-(global-set-key [(mouse-4)] '(lambda () (interactive) (scroll-down 3)))
-(global-set-key [(mouse-5)] '(lambda () (interactive) (scroll-up 3)))
-(global-set-key [(mwheel-up)] '(lambda () (interactive) (scroll-down 3)))
-(global-set-key [(mwheel-down)] '(lambda () (interactive) (scroll-up 3)))
-
-;; search current word
-(defun isearch-current-word (func)
-  (let ((cur-word (current-word)))
-    (if (not cur-word)
-	(message "(current-word) == nil")
-      (call-interactively func)
-      (isearch-yank-string cur-word))))
-(defun isearch-current-word-forward (&optional backward)
-  (interactive "P")
-  (isearch-current-word 'isearch-forward))
-(global-set-key (kbd "C-c C-s") 'isearch-current-word-forward)
