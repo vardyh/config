@@ -16,10 +16,6 @@
 (show-paren-mode t)
 (column-number-mode t)
 
-;; ido mode
-(require 'ido)
-(ido-mode t)
-
 ;; recent jump
 (require 'recent-jump)
 (global-set-key (kbd "C-c n") 'recent-jump-jump-forward)
@@ -72,6 +68,7 @@
 (load-file (concat plugin-dir "cedet/common/cedet.el"))
 (setq semanticdb-default-save-directory (concat config-dir "semanticdb"))
 (semantic-load-enable-code-helpers)
+(global-ede-mode t)
 
 ;; ecb
 (setq load-path (cons (concat plugin-dir "ecb") load-path))
@@ -156,8 +153,17 @@
 
 ;; font setting
 (case (window-system)
-  ('x (set-default-font "Monaco-8"))
-  ('w32 (set-default-font "Monaco-9")))
+  ('x (progn
+	(set-default-font "Monaco-8")
+	(set-fontset-font (frame-parameter nil 'font)
+			  'han
+			  '("Microsoft YaHei" . "unicode-bmp"))))
+  ('w32 (progn
+	  (set-default-font "Monaco-9")
+	  (set-fontset-font (frame-parameter nil 'font)
+			    'han
+			    '("Microsoft YaHei" . "unicode-bmp")))))
+
 
 ;; emacs lisp mode
 (defun elisp-mode-hook ()
