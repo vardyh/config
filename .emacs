@@ -16,6 +16,14 @@
 (show-paren-mode t)
 (column-number-mode t)
 
+;; highlight tail
+(require 'highlight-tail)
+(setq highlight-tail-colors
+          '(("black" . 0)
+            ("#bc2525" . 25)
+            ("black" . 66)))
+(highlight-tail-mode t)
+
 ;; auto complete
 (require 'auto-complete)
 (add-to-list 'ac-dictionary-directories (concat plugin-dir "ac-dict"))
