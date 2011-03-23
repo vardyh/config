@@ -4,6 +4,7 @@
 (setq load-path (cons plugin-dir load-path))
 
 ;; common settings
+(set-language-environment 'UTF-8)
 (setq inhibit-startup-message t)
 (setq scroll-step 1)
 (setq display-time-day-and-date t)
@@ -15,10 +16,6 @@
 (scroll-bar-mode nil)
 (show-paren-mode t)
 (column-number-mode t)
-
-;; ido mode
-(require 'ido)
-(ido-mode t)
 
 ;; recent jump
 (require 'recent-jump)
