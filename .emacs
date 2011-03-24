@@ -17,6 +17,9 @@
 (show-paren-mode t)
 (column-number-mode t)
 
+;; htmlize
+(require 'htmlize)
+
 ;; recent jump
 (require 'recent-jump)
 (global-set-key (kbd "C-c n") 'recent-jump-jump-forward)
