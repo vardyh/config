@@ -11,11 +11,16 @@
 (setq display-time-24hr-format t)
 (display-time)
 (display-battery-mode)
+(global-set-key (kbd "C-x C-b") 'ibuffer)
 
 (tool-bar-mode nil)
 (scroll-bar-mode nil)
 (show-paren-mode t)
 (column-number-mode t)
+
+;; desktop
+(require 'desktop)
+(desktop-save-mode t)
 
 ;; htmlize
 (require 'htmlize)
