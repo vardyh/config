@@ -154,8 +154,8 @@
 ;; smooth mouse scrolling
 (global-set-key [(mouse-4)] '(lambda () (interactive) (scroll-down 3)))
 (global-set-key [(mouse-5)] '(lambda () (interactive) (scroll-up 3)))
-(global-set-key [(mwheel-up)] '(lambda () (interactive) (scroll-down 3)))
-(global-set-key [(mwheel-down)] '(lambda () (interactive) (scroll-up 3)))
+(global-set-key [(wheel-up)] '(lambda () (interactive) (scroll-down 3)))
+(global-set-key [(wheel-down)] '(lambda () (interactive) (scroll-up 3)))
 
 ;; search current word
 (defun isearch-current-word (func)
