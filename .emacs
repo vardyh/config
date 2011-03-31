@@ -47,21 +47,7 @@
 ;; gtags
 (require 'gtags)
 (gtags-mode t)
-(defun gtags-find-current-word ()
-  (interactive)
-  (let (tagname prompt input)
-    (setq tagname (current-word))
-    (if tagname
-      (setq prompt (concat "Find tag: (default " tagname ") "))
-     (setq prompt "Find tag: "))
-    (setq input (completing-read prompt 'gtags-completing-gtags
-                  nil nil nil gtags-history-list))
-    (if (not (equal "" input))
-      (setq tagname input))
-    (gtags-push-context)
-    (gtags-goto-tag tagname "")))
-(global-set-key (kbd "M-.") 'gtags-find-current-word)
-(global-set-key (kbd "M-,") 'gtags-find-symbol)
+(global-set-key (kbd "M-,") 'gtags-find-tag-from-here)
 (global-set-key (kbd "C-x p") 'gtags-pop-stack)
 
 ;; cedet
@@ -126,7 +112,6 @@
 (defun c/c++-mode-hook ()
   (c-set-style "linux")
   (c-toggle-hungry-state t)
-  (gtags-mode t)
   (auto-complete-mode t)
   (hs-minor-mode t)
   (local-set-key (kbd "M-\\") 'hs-toggle-hiding)
