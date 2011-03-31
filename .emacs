@@ -4,13 +4,15 @@
 (setq load-path (cons plugin-dir load-path))
 
 ;; common settings
-(set-language-environment 'UTF-8)
 (setq inhibit-startup-message t)
 (setq scroll-step 1)
 (setq display-time-day-and-date t)
 (setq display-time-24hr-format t)
+
+(set-language-environment 'UTF-8)
 (display-time)
 (display-battery-mode)
+
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 
 (tool-bar-mode nil)
@@ -18,6 +20,13 @@
 (show-paren-mode t)
 (column-number-mode t)
 (xterm-mouse-mode t)
+
+;; layout
+(if (not (eq (window-system) 'ns))
+    (progn
+      (require 'layout-restore)
+      (global-set-key (kbd "C-c l") 'layout-save-current)
+      (global-set-key (kbd "C-c d") 'layout-delete-current)))
 
 ;; desktop
 (require 'desktop)
@@ -97,11 +106,6 @@
 ;; line number
 (require 'linum)
 (global-linum-mode t)
-
-;; layout
-(require 'layout-restore)
-(global-set-key (kbd "C-c l") 'layout-save-current)
-(global-set-key (kbd "C-c d") 'layout-delete-current)
 
 ;; emacs lisp mode
 (defun elisp-mode-hook ()
@@ -201,4 +205,6 @@
 	  (set-default-font "Monaco-9")
 	  (set-fontset-font (frame-parameter nil 'font)
 			    'han
-			    '("Microsoft YaHei" . "unicode-bmp")))))
+			    '("Microsoft YaHei" . "unicode-bmp"))))
+  ('ns (progn
+	  (set-default-font "Monaco-10"))))
