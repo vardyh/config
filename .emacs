@@ -8,6 +8,8 @@
 (setq scroll-step 1)
 (setq display-time-day-and-date t)
 (setq display-time-24hr-format t)
+(setq cursor-type 'box)
+(setq aquamacs-scratch-file nil)
 
 (set-language-environment 'UTF-8)
 (display-time)
@@ -21,14 +23,14 @@
 (column-number-mode t)
 (xterm-mouse-mode t)
 
+;; desktop
+(require 'desktop)
+(desktop-save-mode t)
+
 ;; winner mode
 (require 'winner)
 (winner-mode t)
 (global-set-key (kbd "C-c b") 'winner-undo)
-
-;; desktop
-(require 'desktop)
-(desktop-save-mode t)
 
 ;; htmlize
 (require 'htmlize)
@@ -166,7 +168,7 @@
   (color-theme-gnome2)
   (color-theme-install
    '(color-theme-vardyh
-     ((background-color . "#002832")
+     ((background-color . "#002030")
       (background-mode . light)
       (border-color . "#000000")
       (cursor-color . "#ffffff")
@@ -185,28 +187,31 @@
      (minibuffer-prompt ((t (:foreground "#ffffff" t))))
      (font-lock-warning-face ((t (:foreground "Red" :bold t))))
      (isearch-lazy-highlight-face ((t (:background "#353535")))))))
+(if (not (eq (window-system) nil))
+    (progn
+      (color-theme-vardyh)
+      (mapc (lambda (face)
+	      (set-face-attribute face nil :weight 'normal :underline nil))
+	    (face-list))))
 
-(defun global-init()
-  (progn
-    ;; font setting
-    (case (window-system)
-      ('x (progn
-	    (set-default-font "Monaco-8")
-	    (set-fontset-font (frame-parameter nil 'font)
-			      'han
-			      '("Microsoft YaHei" . "unicode-bmp"))))
-      ('w32 (progn
-	      (set-default-font "Monaco-9")
-	      (set-fontset-font (frame-parameter nil 'font)
-				'han
-				'("Microsoft YaHei" . "unicode-bmp"))))
-      ('ns (progn
-	     (set-default-font "Monaco-10"))))
-    ;; disable bold and underlined text
-    (if (not (eq (window-system) nil))
-	(progn
-	  (color-theme-vardyh)
-	  (mapc (lambda (face)
-		  (set-face-attribute face nil :weight 'normal :underline nil))
-		(face-list))))))
-(add-hook 'after-init-hook 'global-init)
+;; font setting
+(case (window-system)
+  ('x (progn
+	(set-default-font "Monaco-8")
+	(set-fontset-font (frame-parameter nil 'font)
+			  'han
+			  '("Microsoft YaHei" . "unicode-bmp"))))
+  ('w32 (progn
+	  (set-default-font "Monaco-9")
+	  (set-fontset-font (frame-parameter nil 'font)
+			    'han
+			    '("Microsoft YaHei" . "unicode-bmp"))))
+  ('ns (progn
+	  (set-default-font "Monaco-10"))))
+
+;; frame maximize
+(defun maximize-frame ()
+  (interactive)
+  (set-frame-position (selected-frame) 0 0)
+  (set-frame-size (selected-frame) 1000 1000))
+(global-set-key [(meta f10)] 'maximize-frame)
