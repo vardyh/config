@@ -21,12 +21,10 @@
 (column-number-mode t)
 (xterm-mouse-mode t)
 
-;; layout
-(if (not (eq (window-system) 'ns))
-    (progn
-      (require 'layout-restore)
-      (global-set-key (kbd "C-c l") 'layout-save-current)
-      (global-set-key (kbd "C-c d") 'layout-delete-current)))
+;; winner mode
+(require 'winner)
+(winner-mode t)
+(global-set-key (kbd "C-c b") 'winner-undo)
 
 ;; desktop
 (require 'desktop)
@@ -187,24 +185,28 @@
      (minibuffer-prompt ((t (:foreground "#ffffff" t))))
      (font-lock-warning-face ((t (:foreground "Red" :bold t))))
      (isearch-lazy-highlight-face ((t (:background "#353535")))))))
-(if (not (eq (window-system) nil))
-    (progn
-      (color-theme-vardyh)
-      (mapc (lambda (face)
-	      (set-face-attribute face nil :weight 'normal :underline nil))
-	    (face-list))))
 
-;; font setting
-(case (window-system)
-  ('x (progn
-	(set-default-font "Monaco-8")
-	(set-fontset-font (frame-parameter nil 'font)
-			  'han
-			  '("Microsoft YaHei" . "unicode-bmp"))))
-  ('w32 (progn
-	  (set-default-font "Monaco-9")
-	  (set-fontset-font (frame-parameter nil 'font)
-			    'han
-			    '("Microsoft YaHei" . "unicode-bmp"))))
-  ('ns (progn
-	  (set-default-font "Monaco-10"))))
+(defun global-init()
+  (progn
+    ;; font setting
+    (case (window-system)
+      ('x (progn
+	    (set-default-font "Monaco-8")
+	    (set-fontset-font (frame-parameter nil 'font)
+			      'han
+			      '("Microsoft YaHei" . "unicode-bmp"))))
+      ('w32 (progn
+	      (set-default-font "Monaco-9")
+	      (set-fontset-font (frame-parameter nil 'font)
+				'han
+				'("Microsoft YaHei" . "unicode-bmp"))))
+      ('ns (progn
+	     (set-default-font "Monaco-10"))))
+    ;; disable bold and underlined text
+    (if (not (eq (window-system) nil))
+	(progn
+	  (color-theme-vardyh)
+	  (mapc (lambda (face)
+		  (set-face-attribute face nil :weight 'normal :underline nil))
+		(face-list))))))
+(add-hook 'after-init-hook 'global-init)
