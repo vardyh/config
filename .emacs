@@ -23,9 +23,8 @@
 (column-number-mode t)
 (xterm-mouse-mode t)
 
-;; desktop
-(require 'desktop)
-(desktop-save-mode t)
+;; tramp
+(require 'tramp)
 
 ;; winner mode
 (require 'winner)
