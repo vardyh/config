@@ -16,12 +16,17 @@
 (display-battery-mode)
 
 (global-set-key (kbd "C-x C-b") 'ibuffer)
+(global-set-key (kbd "C-u") 'undo)
 
-(tool-bar-mode nil)
+(if (not (eq (window-system) 'ns))
+    (tool-bar-mode nil))
 (scroll-bar-mode nil)
 (show-paren-mode t)
 (column-number-mode t)
 (xterm-mouse-mode t)
+
+;; desktop
+(require 'desktop)
 
 ;; tramp
 (require 'tramp)
@@ -206,7 +211,7 @@
 			    'han
 			    '("Microsoft YaHei" . "unicode-bmp"))))
   ('ns (progn
-	  (set-default-font "Monaco-10"))))
+	  (set-default-font "Monaco-12"))))
 
 ;; frame maximize
 (defun maximize-frame ()
