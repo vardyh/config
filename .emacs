@@ -27,6 +27,7 @@
 
 ;; desktop
 (require 'desktop)
+(desktop-save-mode 1)
 
 ;; tramp
 (require 'tramp)
