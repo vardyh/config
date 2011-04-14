@@ -62,6 +62,7 @@
 (require 'gtags)
 (gtags-mode t)
 (global-set-key (kbd "M-,") 'gtags-find-tag-from-here)
+(global-set-key (kbd "M-.") 'gtags-find-tag)
 (global-set-key (kbd "C-x p") 'gtags-pop-stack)
 
 ;; cedet
