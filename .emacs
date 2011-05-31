@@ -25,6 +25,10 @@
 (column-number-mode t)
 (xterm-mouse-mode t)
 
+;; cdb mode for Windows
+(if (eq system-type 'windows-nt)
+    (load-file (concat plugin-dir "cdb-gud.el")))
+
 ;; desktop
 (require 'desktop)
 (desktop-save-mode 1)
