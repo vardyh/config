@@ -15,11 +15,13 @@
 (display-time)
 (display-battery-mode)
 
-(global-set-key (kbd "C-x C-b") 'ibuffer)
-(global-set-key (kbd "C-u") 'undo)
+(global-unset-key (kbd "M-x"))
+(global-set-key (kbd "C-x C-m") 'execute-extended-command)
+(global-set-key (kbd "C-w") 'backward-kill-word)
 
-(if (not (eq (window-system) 'ns))
-    (tool-bar-mode nil))
+(global-set-key (kbd "C-x C-b") 'ibuffer)
+
+(tool-bar-mode nil)
 (scroll-bar-mode nil)
 (show-paren-mode t)
 (column-number-mode t)
