@@ -1,0 +1,79 @@
+xft*dpi: 96
+Xft*antialias: true
+Xft*hintstyle: hintsnone
+Xft*smoothing: subpixel
+
+urxvt*title: rxvt-unicode
+urxvt*termName: xterm
+urxvt*iso14755: false
+urxvt*cursorBlink: true
+urxvt*geometry: 160x39
+urxvt*font: xft:profont:pixelsize=9,xft:HYXiZhongYuanJ:pixelsize=9:bold
+urxvt*boldFont: xft:profont:pixelsize=9,xft:HYXiZhongYuanJ:pixelsize=9:bold
+urxvt*scrollBar: false
+urxvt*tintColor: #306030
+urxvt*shading: 5
+urxvt*visualBell: false
+urxvt*urlLauncher: open
+
+urxvt*backgroundPixmap: /Users/vardyh/.config/termbk.jpg
+urxvt*background: #222222
+urxvt*foreground: #dddddd
+
+! black
+urxvt*color0:  #000000
+urxvt*color8:  #686a66
+! red
+urxvt*color1: #f07070
+urxvt*color9: #dca3a3
+! green
+urxvt*color2:  #60a750
+urxvt*color10: #97e360
+! yellow
+urxvt*color3:  #d6bf44
+urxvt*color11: #f1da68
+! blue
+urxvt*color4:  #437baf
+urxvt*color12: #84b0d5
+! magenta
+urxvt*color5:  #89668b
+urxvt*color13: #bc94b4
+! cyan
+urxvt*color6:  #28919a
+urxvt*color14: #51c5de
+! white
+urxvt*color7:  #dbded9
+urxvt*color15: #f1f1f0
+
+! ! black + red
+! urxvt*color0: #1e2320
+! urxvt*color1: #f07070
+! ! green + yellow
+! urxvt*color2: #a2e173
+! urxvt*color3: #dfaf8f
+! ! blue + purple
+! urxvt*color4: #607080
+! urxvt*color5: #dc8cc3
+! ! cyan + white
+! urxvt*color6: #8cd0d3
+! urxvt*color7: #dcdccc
+! ! bright-black + bright-red
+! urxvt*color8: #709080
+! urxvt*color9: #dca3a3
+! ! bright-green + bright-yellow
+! urxvt*color10: #70bf80
+! urxvt*color11: #f0dfaf
+! ! bright-blue + bright-purple
+! urxvt*color12: #94bff3
+! urxvt*color13: #ec93d3
+! ! bright-cyan + bright-white
+! urxvt*color14: #93e0e3
+! urxvt*color15: #ffffff
+
+urxvt*pointerColor: #cccccc
+urxvt*pointerColor2: #111111
+!urvxt*blurRadius: 2
+!urxvt*imLocale: en_US.UTF-8
+
+xterm*background: #222222
+xterm*foreground: #dddddd
