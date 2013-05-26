@@ -16,7 +16,7 @@ urxvt*shading: 5
 urxvt*visualBell: false
 urxvt*urlLauncher: open
 
-urxvt*backgroundPixmap: /Users/vardyh/.config/termbk.jpg
+urxvt*backgroundPixmap: /Users/vardyh/.config/pics/termbk.jpg
 urxvt*background: #222222
 urxvt*foreground: #dddddd
 
