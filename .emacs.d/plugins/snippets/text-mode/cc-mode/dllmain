@@ -1,0 +1,11 @@
+BOOL WINAPI DllMain(HINSTANCE mod, DWORD reason, LPVOID reserved)
+{
+	DisableThreadLibraryCalls(mod);
+
+	if (reason == DLL_PROCESS_ATTACH) {
+		$0
+	} else if (reason == DLL_PROCESS_DETACH) {
+	}
+
+	return TRUE;
+}

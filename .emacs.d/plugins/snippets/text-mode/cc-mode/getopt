@@ -1,0 +1,21 @@
+while (1) {
+	int c = getopt(argc, argv, "${1:h}");
+
+	if (c == -1)
+		break;
+
+	switch (c) {
+
+	${2:case 'h':
+		usage(stdout);
+		return 0;
+	default:
+		${3:usage(stderr);
+		return -EINVAL};
+	}
+}
+
+argc -= optind;
+argv += optind;
+
+$0

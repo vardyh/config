@@ -1,0 +1,9 @@
+switch (${1:var}) {
+
+case ${2:case}:
+	$0
+	break;
+
+default:
+	break;
+}

@@ -1,0 +1,8 @@
+{ name = "${1:RecordName}",
+  type = AT_${2:pe},
+  rsts = { "peflags: PEF_${3:uexe}" },
+  sigs = { P("${4:Property}"),
+       	   S("${5:StringSignature}"),
+       	   B("${6:BinarySignature}"),},
+},
+$0

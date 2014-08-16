@@ -1,0 +1,27 @@
+while (1) {
+	static struct option long_options[] = {
+		{ "${1:help}", ${2:0}, 0, ${3:'h'} },
+		{ 0, },
+	};
+
+	int optidx;
+	int c = getopt_long(argc, argv, "${4:h}",
+			    long_options, &optidx);
+	if (c == -1)
+		break;
+
+	switch (c) {
+
+	${5:case 'h':
+		usage(stdout);
+		return 0};
+	default:
+		${6:usage(stderr);
+		return -EINVAL};
+	}
+}
+
+argc -= optind;
+argv += optind;
+
+$0

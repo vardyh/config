@@ -1,0 +1,6 @@
+{ prop = "${1:PropertyName}",
+  least = ${2:1},
+  sigs = { S("${3:StringSignature}"),
+       	   B("${4:BinarySignature}"),},
+},
+$0

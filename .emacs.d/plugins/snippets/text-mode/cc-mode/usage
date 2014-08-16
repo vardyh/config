@@ -1,0 +1,5 @@
+static void usage(FILE *filp)
+{
+	fprintf(filp, "Usage: ${1:progn}\n");
+}
+$0
