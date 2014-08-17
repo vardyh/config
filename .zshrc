@@ -46,9 +46,6 @@ export MINGW64_PATH=/usr/local/opt/mingw64/bin
 
 export PATH=/usr/local/bin::/usr/local/sbin:$MINGW32_PATH:$MINGW64_PATH:$PATH:~/devel/scripts
 
-alias ls='ls -G'
-alias emacs='bash --login emacs -nw'
-alias make='nice make -j8'
 alias less='less -r'
 alias grep='grep --color=always'
 alias wine='LC_ALL=zh_CN.UTF-8 wine'
