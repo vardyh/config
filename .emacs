@@ -65,22 +65,24 @@
   (color-theme-gnome2)
   (color-theme-install
    '(color-theme-vardyh
-     ((background-color . "#002e40")
+     ((background-color . "#13656f")
       (background-mode . light)
-      (border-color . "#000000")
+      (border-color . "#333333")
       (cursor-color . "#ffffff")
       (foreground-color . "#d0d0d0")
       (mouse-color . "white"))
      (fringe ((t (:background "#002832"))))
-     (mode-line ((t (:foreground "#b5b5b5" :background "#000000"))))
-     (region ((t (:background "#707df5"))))
-     (font-lock-builtin-face ((t (:foreground "#ffc0c0"))))
-     (font-lock-comment-face ((t (:foreground "#808080"))))
+     (mode-line ((t (:foreground "#b5b5b5" :background "#333333"))))
+     (region ((t (:background "#707da5"))))
+     (font-lock-builtin-face ((t (:foreground "#f9d5d5"))))
+     (font-lock-preprocessor-face ((t (:foreground "#e8c5c5"))))
+     (font-lock-comment-face ((t (:foreground "#a0a0a0"))))
+     (font-lock-doc-string-face ((t (:foreground "#c0a0a0"))))
      (font-lock-function-name-face ((t (:foreground "#ffe0c0"))))
-     (font-lock-keyword-face ((t (:foreground "#bcdf57"))))
-     (font-lock-string-face ((t (:foreground "#ffcd62"))))
-     (font-lock-type-face ((t (:foreground"#c0c0ff"))))
-     (font-lock-variable-name-face ((t (:foreground "#bcff79"))))
+     (font-lock-keyword-face ((t (:foreground "#e7bcbc"))))
+     (font-lock-string-face ((t (:foreground "#fdf3a2"))))
+     (font-lock-type-face ((t (:foreground"#9cbed8"))))
+     (font-lock-variable-name-face ((t (:foreground "#d5f291"))))
      (minibuffer-prompt ((t (:foreground "#ffffff" t))))
      (font-lock-warning-face ((t (:foreground "Red" :bold t))))
      (isearch-lazy-highlight-face ((t (:background "#353535")))))))
@@ -94,12 +96,12 @@
 ;; font setting
 (case (window-system)
   ('x (progn
-	(set-default-font "ProFontWindows-9")
+	(set-default-font "Monaco-8")
 	(set-fontset-font (frame-parameter nil 'font)
 			  'han
 			  '("Microsoft YaHei" . "unicode-bmp"))))
   ('w32 (progn
-	  (set-default-font "Monaco-9")
+	  (set-default-font "ProFontWindows-10.5")
 	  (set-fontset-font (frame-parameter nil 'font)
 			    'han
 			    '("Microsoft YaHei" . "unicode-bmp"))))
@@ -284,7 +286,7 @@
 (global-set-key (kbd "M-/") 'yas/expand)
 
 ;; git support
-(require 'egg)
+(require 'magit)
 
 ;; nsis mode
 (require 'nsis-mode)
