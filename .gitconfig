@@ -6,12 +6,6 @@
 	co = checkout
 	br = branch
 	st = status
-[color]
-	diff = always
-	status = always
-	commit = true
-	ui = always
-	interactive = always
 [push]
 	default = matching
 [core]
