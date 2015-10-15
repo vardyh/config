@@ -65,7 +65,7 @@
   (color-theme-gnome2)
   (color-theme-install
    '(color-theme-vardyh
-     ((background-color . "#13656f")
+     ((background-color . "#19556e")
       (background-mode . light)
       (border-color . "#333333")
       (cursor-color . "#ffffff")
