@@ -36,7 +36,7 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
-# Customize to your needs...
+unset GREP_OPTIONS
 
 export LC_ALL=en_US.UTF-8
 export LC_CTYPE=zh_CN.GB18030
