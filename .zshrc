@@ -52,3 +52,5 @@ alias wine='LC_ALL=zh_CN.UTF-8 wine'
 
 export DBDIR=/usr/local/share/xsse/db
 export DBDEV=~/devel/works/virdb
+
+export LD_LIBRARY_PATH=/usr/local/lib
