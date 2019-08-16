@@ -1,0 +1,3 @@
+#define USE_LOG
+#include <debug.h>
+$0
