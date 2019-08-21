@@ -65,7 +65,7 @@
   (color-theme-gnome2)
   (color-theme-install
    '(color-theme-vardyh
-     ((background-color . "#19556e")
+     ((background-color . "#003050")
       (background-mode . light)
       (border-color . "#333333")
       (cursor-color . "#ffffff")
@@ -88,7 +88,12 @@
      (isearch-lazy-highlight-face ((t (:background "#353535")))))))
 (if (not (eq (window-system) nil))
     (progn
-      (color-theme-vardyh)
+
+      ;; (color-theme-vardyh)
+      (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
+      (add-to-list 'load-path "~/.emacs.d/themes")
+      (load-theme 'solarized-light t)
+
       (mapc (lambda (face)
 	      (set-face-attribute face nil :weight 'normal :underline nil))
 	    (face-list))))
@@ -260,9 +265,32 @@
   (local-set-key (kbd "C-M-/") 'semantic-ia-complete-symbol-menu)
 ;  (local-set-key "." 'ac-complete-semantic-self-insert)
 ;  (local-set-key ">" 'ac-complete-semantic-self-insert)
+
+  (let ((filename (buffer-file-name)))
+    (when (or
+	   (string-match "/works/unicorn" filename)
+	   (string-match "/vxeng-dt/" filename))
+      (setq indent-tabs-mode nil)
+      (setq c-basic-offset 4)
+      (setq tab-width 4))
+    )
   )
 (add-hook 'c-mode-hook 'c/c++-mode-hook)
 (add-hook 'c++-mode-hook 'c/c++-mode-hook)
+
+;; (defmacro define-new-c-style (name derived-from style-alist match-path)
+;;   `(progn
+;;      (c-add-style ,name
+;;                   '(,derived-from ,@style-alist))
+;;      (add-hook 'c-mode-hook
+;;                (lambda ()
+;;                  (let ((filename (buffer-file-name)))
+;;                    (when (and filename
+;;                               (string-match match-path filename))
+;;                      (c-set-style ,name)))))))
+;; (define-new-c-style "unicorn" "gnu" ((setq tab-width 4)
+;; 				     (setq indent-tabs-mode nil))
+;;   "/src/unicorn")
 
 ;; assembly mode
 (defun assembly-mode-hook ()
@@ -356,6 +384,10 @@
 ;; lua mode
 (require 'lua-mode)
 
+;; go mode
+(add-to-list 'load-path (concat plugin-dir "go-mode"))
+(require 'go-mode-autoloads)
+
 ;; nsis mode
 (autoload 'nsis-mode "nsis-mode" "NSIS mode" t)
 (setq auto-mode-alist (append '(("\\.\\([Nn][Ss][Ii]\\)$" .
@@ -373,6 +405,9 @@
 ;; eassist
 (require 'eassist)
 (global-set-key (kbd "C-c h") 'eassist-switch-h-cpp)
+
+;; markdown
+(require 'markdown-mode)
 
 ;;
 ; life style
@@ -416,3 +451,4 @@
 
 ;; start server
 (server-start)
+(put 'upcase-region 'disabled nil)
