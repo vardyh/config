@@ -86,14 +86,46 @@
      (minibuffer-prompt ((t (:foreground "#ffffff" t))))
      (font-lock-warning-face ((t (:foreground "Red" :bold t))))
      (isearch-lazy-highlight-face ((t (:background "#353535")))))))
+
+(defun color-theme-solarized ()
+  (interactive)
+  (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
+  (add-to-list 'load-path "~/.emacs.d/themes")
+
+  ;; make the fringe stand out from the background
+  (setq solarized-distinct-fringe-background t)
+
+  ;; Don't change the font for some headings and titles
+  (setq solarized-use-variable-pitch nil)
+
+  ;; make the modeline high contrast
+  (setq solarized-high-contrast-mode-line t)
+
+  ;; Use less bolding
+  (setq solarized-use-less-bold t)
+
+  ;; Use more italics
+  (setq solarized-use-more-italic t)
+
+  ;; Use less colors for indicators such as git:gutter, flycheck and similar
+  (setq solarized-emphasize-indicators nil)
+
+  ;; Don't change size of org-mode headlines (but keep other size-changes)
+  (setq solarized-scale-org-headlines nil)
+
+  ;; Avoid all font-size changes
+  (setq solarized-height-minus-1 1.0)
+  (setq solarized-height-plus-1 1.0)
+  (setq solarized-height-plus-2 1.0)
+  (setq solarized-height-plus-3 1.0)
+  (setq solarized-height-plus-4 1.0)
+
+  (load-theme 'solarized-light t))
+
 (if (not (eq (window-system) nil))
     (progn
-
       ;; (color-theme-vardyh)
-      (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
-      (add-to-list 'load-path "~/.emacs.d/themes")
-      (load-theme 'solarized-light t)
-
+      (color-theme-solarized)
       (mapc (lambda (face)
 	      (set-face-attribute face nil :weight 'normal :underline nil))
 	    (face-list))))
