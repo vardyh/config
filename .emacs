@@ -118,16 +118,14 @@
 
   (load-theme 'solarized-light t))
 
-(defun color-theme-gruvbox ()
-  (load-theme 'gruvbox-dark-soft t))
-
 (if (not (eq (window-system) nil))
     (progn
       (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
       (add-to-list 'load-path "~/.emacs.d/themes")
       ;; (color-theme-vardyh)
       ;; (color-theme-solarized)
-      (color-theme-gruvbox)
+      ;; (load-theme 'gruvbox-dark-soft t)
+      (load-theme 'brin t)
       (mapc (lambda (face)
 	      (set-face-attribute face nil :weight 'normal :underline nil))
 	    (face-list))))
@@ -151,21 +149,21 @@
 (require 'tabbar)
 (tabbar-mode t)
 
-;; only happy with color-theme-vardyh
-;; (set-face-attribute
-;;  'tabbar-default nil
-;;  :family "Tahoma"
-;;  :background "gray80"
-;;  :foreground "gray30"
-;;  :height 1.0)
-;; (set-face-attribute
-;;  'tabbar-button nil
-;;  :inherit 'tabbar-default
-;;  :box '(:line-width 1 :color "gray30"))
-;; (set-face-attribute
-;;  'tabbar-unselected nil
-;;  :inherit 'tabbar-default
-;;  :box '(:line-width 2 :color "gray70"))
+;; only happy with some color themes, comment'em out when neccessary
+(set-face-attribute
+ 'tabbar-default nil
+ :family "Tahoma"
+ :background "gray80"
+ :foreground "gray30"
+ :height 1.0)
+(set-face-attribute
+ 'tabbar-button nil
+ :inherit 'tabbar-default
+ :box '(:line-width 1 :color "gray30"))
+(set-face-attribute
+ 'tabbar-unselected nil
+ :inherit 'tabbar-default
+ :box '(:line-width 2 :color "gray70"))
 
 ;; line number
 (require 'linum)
