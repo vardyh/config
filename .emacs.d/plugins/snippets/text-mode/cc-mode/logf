@@ -1,0 +1,10 @@
+#define ${1:LOG}(...)						\
+	do {							\
+		FILE *logf = fopen("${2:log}.log", "a+");	\
+		if (logf) {					\
+			fprintf(logf, __VA_ARGS__);		\
+			fclose(logf);				\
+		}						\
+	} while (0)
+
+$0
